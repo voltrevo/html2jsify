@@ -10,6 +10,8 @@ some.html
 
 app.js
 
+    'use strict'
+
     var html = require('./some.html')
 
     // html is a function which returns a dom node
@@ -18,4 +20,4 @@ app.js
 
 Then
 
-    # browserify -t html2jsify app.js
+    browserify -t html2jsify app.js
