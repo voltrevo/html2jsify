@@ -1,18 +1,18 @@
 # Turn crummy HTML into beautiful Javascript
 
-    npm install html2js-browserify
+    npm install html2jsify
 
 ## How?
 
 some.html
 
-    <html><body><h1>dude!</h1></body></html>
+    <div><h1>dude!</h1></div>
 
 app.js
 
     var html = require('./some.html');
-    console.log(html);
+    console.log(html());
 
 Then
 
-    # browserify -t html2js-browserify app.js
+    # browserify -t html2jsify app.js
