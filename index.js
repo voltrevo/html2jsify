@@ -1,34 +1,50 @@
-var fs = require('fs');
-var through = require('through');
+'use strict'
 
-function isHtml (file) {
-    return /\.html$/.test(file);
+var fs = require('fs')
+var path = require('path')
+var through = require('through')
+
+var template = fs.readFileSync(__dirname + '/template.js').toString()
+
+var isHtml = function(file) {
+  return /\.html$/.test(file)
 }
 
 var escapeContent = function(content) {
-  return content.replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/\r?\n/g, '\\n\' +\n    \'');
-};
-
-function html2js(content) {
-  return "module.exports = '" + escapeContent(content) + "';";
+  return content.replace(/\\/g, '\\\\').replace(/'/g, '\\\'').replace(/\r?\n/g, '\\n\' +\n    \'')
 }
 
-module.exports = function (file) {
-    if (!isHtml(file)) return through();
+var html2js = function(file, content) {
+  return (template
+    .replace('FILE_REPLACE_TAG', file)
+    .replace('CONTENT_REPLACE_TAG', escapeContent(content))
+  )
+}
 
-    var data = '';
-    return through(write, end);
+module.exports = function(file) {
+  if (!isHtml(file)) {
+    return through()
+  }
 
-    function write (buf) { data += buf }
-    function end () {
-        var content, src;
-        try {
-            content = fs.readFileSync(file, 'utf-8');
-            src = html2js(content);
-        } catch (error) {
-            this.emit('error', error);
-        }
-        this.queue(src);
-        this.queue(null);
+  var data = ''
+
+  return through(
+    function write(buf) {
+      data += buf
+    },
+    function end() {
+      var content
+      var src
+
+      try {
+        content = fs.readFileSync(file, 'utf-8')
+        src = html2js(path.basename(file), content)
+      } catch (error) {
+        this.emit('error', error)
+      }
+
+      this.queue(src)
+      this.queue(null)
     }
-};
+  )
+}

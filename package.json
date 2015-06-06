@@ -1,12 +1,12 @@
 {
-  "name": "html2js-browserify",
-  "version": "1.0.0",
-  "description": "turn html into beautiful js, with browserify",
+  "name": "html2jsify",
+  "version": "0.0.1",
+  "description": "Turn html into beautiful js, with browserify",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha test/spec.js"
   },
-  "author": "Tim Macfarlane <timmacfarlane@gmail.com>",
+  "author": "Andrew Morris <voltrevo@gmail.com>",
   "license": "BSD-2-Clause",
   "keywords": [
     "html2js",
