@@ -1,6 +1,6 @@
 {
   "name": "html2jsify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Turn html into beautiful js, with browserify",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
       "name": "Tim Macfarlane",
       "email": "timmacfarlane@gmail.com"
     }
-  ]
+  ],
   "license": "BSD-2-Clause",
   "keywords": [
     "html2js",
