@@ -7,6 +7,12 @@
     "test": "node_modules/.bin/mocha test/spec.js"
   },
   "author": "Andrew Morris <voltrevo@gmail.com>",
+  "contributors": [
+    {
+      "name": "Tim Macfarlane",
+      "email": "timmacfarlane@gmail.com"
+    }
+  ]
   "license": "BSD-2-Clause",
   "keywords": [
     "html2js",
