@@ -6,7 +6,9 @@
 
 some.html
 
-    <div><h1>dude!</h1></div>
+    <div>
+      <h1>dude!</h1>
+    </div>
 
 app.js
 
