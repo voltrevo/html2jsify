@@ -10,8 +10,11 @@ some.html
 
 app.js
 
-    var html = require('./some.html');
-    console.log(html());
+    var html = require('./some.html')
+
+    // html is a function which returns a dom node
+
+    console.log(html())
 
 Then
 
